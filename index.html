@@ -52,35 +52,30 @@
     footer{padding:30px 0;border-top:1px solid rgba(178,139,82,.18);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown);display:flex;justify-content:space-between;gap:20px}
     body{background:radial-gradient(circle at 9% 13%,rgba(178,139,82,.12) 0 2px,transparent 3px),radial-gradient(circle at 88% 24%,rgba(124,34,45,.08) 0 3px,transparent 4px),linear-gradient(135deg,rgba(178,139,82,.045) 25%,transparent 25%) 0 0/54px 54px,linear-gradient(315deg,rgba(178,139,82,.035) 25%,transparent 25%) 0 0/54px 54px,var(--ivory);position:relative}
     body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.38;background:radial-gradient(ellipse 18px 9px at 8% 35%,rgba(126,31,43,.13) 0 55%,transparent 57%),radial-gradient(ellipse 18px 9px at 92% 70%,rgba(126,31,43,.10) 0 55%,transparent 57%);z-index:-1}
+    .portrait-frame{position:relative;padding:14px;background:rgba(251,249,245,.58);border:1px solid rgba(178,139,82,.22);box-shadow:var(--shadow)}
+    .portrait-frame:before{content:"";position:absolute;inset:-12px 12px 12px -12px;border:1px solid rgba(178,139,82,.22);z-index:-1}
+    .portrait-frame img{aspect-ratio:4/5;object-fit:cover;object-position:center top;box-shadow:none}
+    .portrait-caption{text-align:center;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);padding:12px 0 2px}
+    .scroll-hint{margin-top:28px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);opacity:.8}.scroll-hint span{display:inline-block;margin-left:8px;animation:scrollPulse 1.8s ease-in-out infinite}@keyframes scrollPulse{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(5px);opacity:1}}
+
+    /* Visible moving sunlight: like afternoon sun passing through a window */
+    .sunlight{position:fixed;inset:0;z-index:5;pointer-events:none;overflow:hidden;opacity:.82;mix-blend-mode:screen}
+    .sun-glow{position:absolute;width:52vmax;height:52vmax;right:-10vmax;top:-15vmax;border-radius:50%;background:radial-gradient(circle,rgba(255,232,182,.48) 0%,rgba(255,214,137,.22) 28%,rgba(255,214,137,.08) 52%,transparent 72%);filter:blur(8px);animation:sunMove 18s ease-in-out infinite alternate}
+    .sun-disk{position:absolute;width:12vmax;height:12vmax;min-width:95px;min-height:95px;right:9vmax;top:7vmax;border-radius:50%;background:radial-gradient(circle,rgba(255,246,214,.9),rgba(255,213,130,.42) 45%,transparent 72%);filter:blur(3px);animation:sunDisk 18s ease-in-out infinite alternate}
+    .sunbeam{position:absolute;transform-origin:100% 50%;height:34vmax;right:-12vmax;top:9vmax;filter:blur(18px);background:linear-gradient(90deg,transparent 0%,rgba(255,239,201,.08) 30%,rgba(255,224,160,.25) 55%,rgba(255,240,208,.08) 75%,transparent 100%);animation:beamMove 14s ease-in-out infinite alternate}
+    .sunbeam-a{width:115vmax;transform:rotate(22deg)}
+    .sunbeam-b{width:105vmax;top:28vmax;opacity:.48;transform:rotate(10deg);animation-duration:19s;animation-direction:alternate-reverse}
+    .window-shadow{position:absolute;width:75vmax;height:100vh;right:-22vmax;top:-8vmax;opacity:.16;transform:rotate(18deg);background:repeating-linear-gradient(90deg,transparent 0 9vmax,rgba(90,55,30,.22) 9vmax 10vmax,transparent 10vmax 19vmax);filter:blur(9px);animation:shadowMove 24s ease-in-out infinite alternate}
+    @keyframes sunMove{0%{transform:translate3d(7vw,-2vh,0) scale(.9)}50%{transform:translate3d(-3vw,7vh,0) scale(1.05)}100%{transform:translate3d(-15vw,14vh,0) scale(1.12)}}
+    @keyframes sunDisk{0%{transform:translate3d(5vw,-1vh,0)}100%{transform:translate3d(-17vw,13vh,0)}}
+    @keyframes beamMove{0%{transform:translate3d(12vw,-4vh,0) rotate(22deg)}100%{transform:translate3d(-20vw,14vh,0) rotate(12deg)}}
+    @keyframes shadowMove{0%{transform:translate3d(7vw,-3vh,0) rotate(18deg)}100%{transform:translate3d(-18vw,12vh,0) rotate(26deg)}}
+    .nav,.hero,.section,footer{position:relative;z-index:10}
+
     @media(max-width:850px){.nav-links{display:none}.hero,.intro-grid,.journey{grid-template-columns:1fr;gap:45px}.hero{padding-top:120px}.skills-grid{grid-template-columns:1fr 1fr}.works-grid{grid-template-columns:1fr}.section{padding:85px 0}.works-head{display:block}}
-    @media(max-width:520px){h1{font-size:64px}.skills-grid{grid-template-columns:1fr}.journey-card{padding:30px}footer{display:block;text-align:center}footer div+div{margin-top:10px}}
+    @media(max-width:520px){h1{font-size:64px}.hero-image{max-width:92%;margin:0 auto}.sun-glow{width:80vmax;height:80vmax;right:-30vmax}.sun-disk{right:4vmax;top:9vmax}.window-shadow{opacity:.11}.skills-grid{grid-template-columns:1fr}.journey-card{padding:30px}footer{display:block;text-align:center}footer div+div{margin-top:10px}}
   
     /* --- Mahnaz atmosphere: sun + jazz --- */
-    .sunlight{
-      position:fixed; inset:-20vmax; z-index:0; pointer-events:none; overflow:hidden;
-      opacity:.72; mix-blend-mode:soft-light;
-    }
-    .sunlight:before{
-      content:""; position:absolute; width:70vmax; height:70vmax; border-radius:50%;
-      right:-18vmax; top:-18vmax;
-      background:radial-gradient(circle,rgba(255,223,164,.55) 0%,rgba(245,197,117,.25) 24%,rgba(245,197,117,.08) 46%,transparent 70%);
-      filter:blur(18px);
-      animation:sunDrift 22s ease-in-out infinite alternate;
-    }
-    .sunbeam{
-      position:absolute; width:120vmax; height:36vmax; left:-35vmax; top:12vmax;
-      background:linear-gradient(90deg,transparent,rgba(255,221,165,.10),rgba(255,232,196,.18),transparent);
-      filter:blur(30px); transform:rotate(-18deg);
-      animation:beamSweep 28s ease-in-out infinite alternate;
-    }
-    .light-orbit{
-      position:absolute; inset:0;
-      background:conic-gradient(from 15deg at 82% 12%,transparent 0deg,rgba(255,221,165,.10) 45deg,transparent 100deg,rgba(255,232,196,.07) 190deg,transparent 250deg);
-      animation:orbit 32s linear infinite;
-    }
-    @keyframes sunDrift{from{transform:translate3d(-2vw,2vh,0) scale(.96)}to{transform:translate3d(-12vw,10vh,0) scale(1.08)}}
-    @keyframes beamSweep{from{transform:translate3d(-5vw,3vh,0) rotate(-18deg)}to{transform:translate3d(18vw,10vh,0) rotate(-12deg)}}
-    @keyframes orbit{to{transform:rotate(360deg)}}
     .atmosphere-ui{
       position:fixed; right:22px; bottom:20px; z-index:60;
       display:flex; align-items:center; gap:9px;
@@ -119,7 +114,11 @@
 <body>
 
   <div class="sunlight" aria-hidden="true">
-    <div class="sunbeam"></div>
+    <div class="sun-glow"></div>
+    <div class="sun-disk"></div>
+    <div class="sunbeam sunbeam-a"></div>
+    <div class="sunbeam sunbeam-b"></div>
+    <div class="window-shadow"></div>
     <div class="light-orbit"></div>
   </div>
 
@@ -145,9 +144,9 @@
     <section class="hero container">
       <div><div class="eyebrow">Jewelry Designer & Creative</div><h1>Ideas into <em>jewelry.</em></h1>
         <p class="hero-copy">I transform inspiration, emotion and the character of gemstones into distinctive jewelry concepts shaped by form, color and story.</p>
-        <div class="buttons"><a class="btn primary" href="#work">Explore My Work</a><a class="btn" href="#contact">Let's Connect</a></div>
+        <div class="buttons"><a class="btn primary" href="#work">Explore My Work</a><a class="btn" href="#contact">Let's Connect</a></div><div class="scroll-hint">Scroll to explore <span>↓</span></div>
       </div>
-      <div class="hero-image"><img src="work-1.png" alt="Jewelry design concept by Mahnaz Rahmati"></div>
+      <div class="hero-image portrait-frame"><img src="mahnaz-portrait.png" alt="Mahnaz Rahmati — Jewelry Designer & Creative"><div class="portrait-caption">Jewelry Designer · Creative</div></div>
     </section>
 
     <section class="section container" id="about"><div class="intro-grid">
@@ -208,83 +207,79 @@
 
   <script>
     (() => {
-      let audioCtx, master, jazzTimer, isPlaying = false, step = 0;
+      let audioCtx, master, jazzTimer, isPlaying = false, phrase = 0;
 
-      const chords = [
-        [261.63, 329.63, 392.00, 493.88], // Cmaj7
-        [220.00, 261.63, 329.63, 392.00], // Am7
-        [174.61, 220.00, 261.63, 329.63], // Fmaj7
-        [196.00, 246.94, 293.66, 369.99]  // G7
+      // A longer, evolving ambient-jazz phrase. It changes harmony and melody
+      // instead of repeating one 3-second fragment.
+      const bars = [
+        {chord:[261.63,329.63,392.00,493.88], bass:130.81, melody:[523.25,587.33,659.25,587.33]},
+        {chord:[220.00,261.63,329.63,392.00], bass:110.00, melody:[440.00,493.88,523.25,493.88]},
+        {chord:[174.61,220.00,261.63,329.63], bass:87.31, melody:[349.23,392.00,440.00,392.00]},
+        {chord:[196.00,246.94,293.66,369.99], bass:98.00, melody:[392.00,440.00,493.88,440.00]},
+        {chord:[164.81,207.65,246.94,329.63], bass:82.41, melody:[329.63,392.00,415.30,392.00]},
+        {chord:[146.83,174.61,220.00,293.66], bass:73.42, melody:[293.66,349.23,392.00,349.23]},
+        {chord:[174.61,220.00,261.63,329.63], bass:87.31, melody:[392.00,440.00,523.25,440.00]},
+        {chord:[196.00,246.94,293.66,369.99], bass:98.00, melody:[493.88,440.00,392.00,349.23]}
       ];
 
-      function note(freq, start, duration, gainValue, type="sine") {
+      function note(freq, start, duration, gainValue, type='sine') {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
-        osc.type = type;
-        osc.frequency.value = freq;
+        osc.type = type; osc.frequency.value = freq;
         gain.gain.setValueAtTime(0.0001, start);
-        gain.gain.exponentialRampToValueAtTime(gainValue, start + 0.04);
+        gain.gain.exponentialRampToValueAtTime(gainValue, start + 0.05);
         gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
-        osc.connect(gain).connect(master);
-        osc.start(start);
-        osc.stop(start + duration + 0.05);
+        osc.connect(gain).connect(master); osc.start(start); osc.stop(start + duration + 0.06);
       }
 
-      function playJazzLoop() {
+      function scheduleBar(bar, start, barIndex) {
+        const beat = 0.72;
+        bar.chord.forEach((f,i) => note(f, start, beat*4-.08, 0.0085 - i*0.0007, 'triangle'));
+        note(bar.bass, start, beat*1.7, 0.018, 'sine');
+        note(bar.bass*1.5, start+beat*2, beat*1.4, 0.012, 'sine');
+        bar.melody.forEach((f,i) => {
+          const swing = i % 2 ? 0.08 : 0;
+          note(f, start + beat*i*.78 + swing, 0.34, 0.010, 'sine');
+        });
+        if (barIndex % 2 === 1) {
+          note(bar.melody[1]*2, start+beat*3.15, 0.24, 0.006, 'triangle');
+        }
+      }
+
+      function playPhrase() {
         if (!audioCtx || !isPlaying) return;
-        const now = audioCtx.currentTime;
-        const chord = chords[step % chords.length];
-
-        // Warm sustained harmony
-        chord.forEach((f, i) => note(f, now, 3.2, 0.012 - i * 0.001, "triangle"));
-
-        // Soft jazz-like top notes
-        const melody = [chord[2] * 2, chord[1] * 2, chord[3] * 2, chord[2] * 2];
-        melody.forEach((f, i) => note(f, now + 0.25 + i * 0.62, 0.42, 0.009, "sine"));
-
-        step++;
-        jazzTimer = setTimeout(playJazzLoop, 3200);
+        const start = audioCtx.currentTime + 0.05;
+        bars.forEach((bar,i) => scheduleBar(bar, start + i*2.88, i));
+        phrase++;
+        jazzTimer = setTimeout(playPhrase, 8*2.88*1000 - 120);
       }
 
       function startJazz() {
         if (!audioCtx) {
           audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-          master = audioCtx.createGain();
-          master.gain.value = 0.75;
-          master.connect(audioCtx.destination);
+          master = audioCtx.createGain(); master.gain.value = 0.7; master.connect(audioCtx.destination);
         }
-        if (audioCtx.state === "suspended") audioCtx.resume();
-        if (!isPlaying) {
-          isPlaying = true;
-          playJazzLoop();
-        }
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        if (!isPlaying) { isPlaying = true; playPhrase(); }
         updateSoundUI();
       }
 
       function stopJazz() {
-        isPlaying = false;
-        clearTimeout(jazzTimer);
+        isPlaying = false; clearTimeout(jazzTimer);
         if (master) master.gain.setTargetAtTime(0.0001, audioCtx.currentTime, 0.12);
-        setTimeout(() => {
-          if (master && !isPlaying) master.gain.value = 0.75;
-        }, 300);
+        setTimeout(() => { if (master && !isPlaying) master.gain.value = 0.7; }, 350);
         updateSoundUI();
       }
 
       function updateSoundUI() {
-        document.getElementById("soundToggle").textContent = isPlaying ? "Jazz · On" : "Jazz · Off";
-        document.getElementById("soundDot").style.opacity = isPlaying ? "1" : ".35";
+        document.getElementById('soundToggle').textContent = isPlaying ? 'Jazz · On' : 'Jazz · Off';
+        document.getElementById('soundDot').style.opacity = isPlaying ? '1' : '.35';
       }
 
-      document.getElementById("enterSite").addEventListener("click", () => {
-        startJazz();
-        document.getElementById("welcome").classList.add("hidden");
+      document.getElementById('enterSite').addEventListener('click', () => {
+        startJazz(); document.getElementById('welcome').classList.add('hidden');
       });
-
-      document.getElementById("soundToggle").addEventListener("click", () => {
-        if (isPlaying) stopJazz();
-        else startJazz();
-      });
+      document.getElementById('soundToggle').addEventListener('click', () => isPlaying ? stopJazz() : startJazz());
     })();
   </script>
 
