@@ -328,5 +328,105 @@ body:before{
     <div>© 2026 Mahnaz Rahmati</div>
     <div>Jewelry Designer & Creative</div>
   </footer>
+  chord.forEach((f,i)=>{
+    mzNote(
+      f,
+      now,
+      3.2,
+      .012-i*.001,
+      "triangle"
+    );
+  });
+
+  const melody=[
+    chord[2]*2,
+    chord[1]*2,
+    chord[3]*2,
+    chord[2]*2
+  ];
+
+  melody.forEach((f,i)=>{
+    mzNote(
+      f,
+      now+.25+i*.62,
+      .42,
+      .009,
+      "sine"
+    );
+  });
+
+  mzStep++;
+
+  mzTimer=setTimeout(mzJazzLoop,3200);
+}
+
+function mzStartJazz(){
+
+  if(!mzAudio){
+
+    mzAudio=new(
+      window.AudioContext ||
+      window.webkitAudioContext
+    )();
+
+    mzGain=mzAudio.createGain();
+    mzGain.gain.value=.75;
+    mzGain.connect(mzAudio.destination);
+  }
+
+  if(mzAudio.state==="suspended"){
+    mzAudio.resume();
+  }
+
+  if(!mzPlaying){
+    mzPlaying=true;
+    mzJazzLoop();
+  }
+
+  document.getElementById("mzJazz").textContent="♫ Jazz · On";
+}
+
+function mzStopJazz(){
+
+  mzPlaying=false;
+  clearTimeout(mzTimer);
+
+  if(mzGain){
+    mzGain.gain.setTargetAtTime(
+      .0001,
+      mzAudio.currentTime,
+      .12
+    );
+  }
+
+  document.getElementById("mzJazz").textContent="♫ Jazz · Off";
+}
+
+document.getElementById("mzEnter").addEventListener(
+  "click",
+  function(){
+
+    mzStartJazz();
+
+    document
+      .getElementById("mzWelcome")
+      .classList.add("hide");
+
+  }
+);
+
+document.getElementById("mzJazz").addEventListener(
+  "click",
+  function(){
+
+    if(mzPlaying){
+      mzStopJazz();
+    }else{
+      mzStartJazz();
+    }
+
+  }
+);
+</script>
 </body>
 </html>
