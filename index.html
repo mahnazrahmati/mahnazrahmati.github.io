@@ -58,13 +58,15 @@
     .portrait-caption{text-align:center;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);padding:12px 0 2px}
     .scroll-hint{margin-top:28px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);opacity:.8}.scroll-hint span{display:inline-block;margin-left:8px;animation:scrollPulse 1.8s ease-in-out infinite}@keyframes scrollPulse{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(5px);opacity:1}}
 
-    /* Visible moving sunlight: like afternoon sun passing through a window */
-    .sunlight{position:fixed;inset:0;z-index:5;pointer-events:none;overflow:hidden;opacity:.82;mix-blend-mode:screen}
-    .sun-glow{position:absolute;width:52vmax;height:52vmax;right:-10vmax;top:-15vmax;border-radius:50%;background:radial-gradient(circle,rgba(255,232,182,.48) 0%,rgba(255,214,137,.22) 28%,rgba(255,214,137,.08) 52%,transparent 72%);filter:blur(8px);animation:sunMove 18s ease-in-out infinite alternate}
-    .sun-disk{position:absolute;width:12vmax;height:12vmax;min-width:95px;min-height:95px;right:9vmax;top:7vmax;border-radius:50%;background:radial-gradient(circle,rgba(255,246,214,.9),rgba(255,213,130,.42) 45%,transparent 72%);filter:blur(3px);animation:sunDisk 18s ease-in-out infinite alternate}
-    .sunbeam{position:absolute;transform-origin:100% 50%;height:34vmax;right:-12vmax;top:9vmax;filter:blur(18px);background:linear-gradient(90deg,transparent 0%,rgba(255,239,201,.08) 30%,rgba(255,224,160,.25) 55%,rgba(255,240,208,.08) 75%,transparent 100%);animation:beamMove 14s ease-in-out infinite alternate}
-    .sunbeam-a{width:115vmax;transform:rotate(22deg)}
-    .sunbeam-b{width:105vmax;top:28vmax;opacity:.48;transform:rotate(10deg);animation-duration:19s;animation-direction:alternate-reverse}
+    /* Visible moving sunlight: warm afternoon rays crossing the page */
+    .sunlight{position:fixed;inset:0;z-index:55;pointer-events:none;overflow:hidden;opacity:.9}
+    .sun-glow{position:absolute;width:46vmax;height:46vmax;right:-8vmax;top:-10vmax;border-radius:50%;background:radial-gradient(circle,rgba(255,244,211,.9) 0%,rgba(255,218,145,.42) 30%,rgba(255,205,120,.16) 55%,transparent 72%);filter:blur(4px);animation:sunMove 16s ease-in-out infinite alternate}
+    .sun-disk{position:absolute;width:105px;height:105px;right:8vw;top:8vh;border-radius:50%;background:radial-gradient(circle,rgba(255,251,231,.98),rgba(255,211,126,.58) 46%,transparent 72%);filter:blur(2px);box-shadow:0 0 70px rgba(255,210,120,.42);animation:sunDisk 16s ease-in-out infinite alternate}
+    .sunbeam{position:absolute;left:-55vw;top:-30vh;width:95vw;height:170vh;transform:rotate(23deg);background:linear-gradient(90deg,transparent 0%,rgba(255,220,153,.02) 18%,rgba(255,226,166,.20) 40%,rgba(255,244,213,.34) 50%,rgba(255,220,153,.12) 62%,transparent 82%);filter:blur(13px);animation:beamSweep 12s ease-in-out infinite}
+    .sunbeam-b{left:-65vw;top:-15vh;width:70vw;opacity:.6;transform:rotate(15deg);animation-duration:18s;animation-delay:-6s}
+    @keyframes sunMove{0%{transform:translate3d(8vw,-2vh,0) scale(.92)}50%{transform:translate3d(-4vw,6vh,0) scale(1.04)}100%{transform:translate3d(-18vw,16vh,0) scale(1.14)}}
+    @keyframes sunDisk{0%{transform:translate3d(5vw,-1vh,0)}100%{transform:translate3d(-18vw,15vh,0)}}
+    @keyframes beamSweep{0%{transform:translateX(-10vw) rotate(23deg)}50%{transform:translateX(75vw) rotate(23deg)}100%{transform:translateX(155vw) rotate(23deg)}}
     .window-shadow{position:absolute;width:75vmax;height:100vh;right:-22vmax;top:-8vmax;opacity:.16;transform:rotate(18deg);background:repeating-linear-gradient(90deg,transparent 0 9vmax,rgba(90,55,30,.22) 9vmax 10vmax,transparent 10vmax 19vmax);filter:blur(9px);animation:shadowMove 24s ease-in-out infinite alternate}
     @keyframes sunMove{0%{transform:translate3d(7vw,-2vh,0) scale(.9)}50%{transform:translate3d(-3vw,7vh,0) scale(1.05)}100%{transform:translate3d(-15vw,14vh,0) scale(1.12)}}
     @keyframes sunDisk{0%{transform:translate3d(5vw,-1vh,0)}100%{transform:translate3d(-17vw,13vh,0)}}
@@ -205,81 +207,25 @@
   </main>
   <footer class="container"><div>© 2026 Mahnaz Rahmati</div><div>Jewelry Designer & Creative</div></footer>
 
+
+  <audio id="jazzAudio" src="jazz.mp3" preload="auto" loop></audio>
+
   <script>
     (() => {
-      let audioCtx, master, jazzTimer, isPlaying = false, phrase = 0;
-
-      // A longer, evolving ambient-jazz phrase. It changes harmony and melody
-      // instead of repeating one 3-second fragment.
-      const bars = [
-        {chord:[261.63,329.63,392.00,493.88], bass:130.81, melody:[523.25,587.33,659.25,587.33]},
-        {chord:[220.00,261.63,329.63,392.00], bass:110.00, melody:[440.00,493.88,523.25,493.88]},
-        {chord:[174.61,220.00,261.63,329.63], bass:87.31, melody:[349.23,392.00,440.00,392.00]},
-        {chord:[196.00,246.94,293.66,369.99], bass:98.00, melody:[392.00,440.00,493.88,440.00]},
-        {chord:[164.81,207.65,246.94,329.63], bass:82.41, melody:[329.63,392.00,415.30,392.00]},
-        {chord:[146.83,174.61,220.00,293.66], bass:73.42, melody:[293.66,349.23,392.00,349.23]},
-        {chord:[174.61,220.00,261.63,329.63], bass:87.31, melody:[392.00,440.00,523.25,440.00]},
-        {chord:[196.00,246.94,293.66,369.99], bass:98.00, melody:[493.88,440.00,392.00,349.23]}
-      ];
-
-      function note(freq, start, duration, gainValue, type='sine') {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = type; osc.frequency.value = freq;
-        gain.gain.setValueAtTime(0.0001, start);
-        gain.gain.exponentialRampToValueAtTime(gainValue, start + 0.05);
-        gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
-        osc.connect(gain).connect(master); osc.start(start); osc.stop(start + duration + 0.06);
+      const audio = document.getElementById('jazzAudio');
+      const toggle = document.getElementById('soundToggle');
+      const dot = document.getElementById('soundDot');
+      const enter = document.getElementById('enterSite');
+      let isPlaying = false;
+      async function startJazz(){
+        try{ await audio.play(); isPlaying=true; update(); }
+        catch(e){ isPlaying=false; update(); }
       }
-
-      function scheduleBar(bar, start, barIndex) {
-        const beat = 0.72;
-        bar.chord.forEach((f,i) => note(f, start, beat*4-.08, 0.0085 - i*0.0007, 'triangle'));
-        note(bar.bass, start, beat*1.7, 0.018, 'sine');
-        note(bar.bass*1.5, start+beat*2, beat*1.4, 0.012, 'sine');
-        bar.melody.forEach((f,i) => {
-          const swing = i % 2 ? 0.08 : 0;
-          note(f, start + beat*i*.78 + swing, 0.34, 0.010, 'sine');
-        });
-        if (barIndex % 2 === 1) {
-          note(bar.melody[1]*2, start+beat*3.15, 0.24, 0.006, 'triangle');
-        }
-      }
-
-      function playPhrase() {
-        if (!audioCtx || !isPlaying) return;
-        const start = audioCtx.currentTime + 0.05;
-        bars.forEach((bar,i) => scheduleBar(bar, start + i*2.88, i));
-        phrase++;
-        jazzTimer = setTimeout(playPhrase, 8*2.88*1000 - 120);
-      }
-
-      function startJazz() {
-        if (!audioCtx) {
-          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-          master = audioCtx.createGain(); master.gain.value = 0.7; master.connect(audioCtx.destination);
-        }
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        if (!isPlaying) { isPlaying = true; playPhrase(); }
-        updateSoundUI();
-      }
-
-      function stopJazz() {
-        isPlaying = false; clearTimeout(jazzTimer);
-        if (master) master.gain.setTargetAtTime(0.0001, audioCtx.currentTime, 0.12);
-        setTimeout(() => { if (master && !isPlaying) master.gain.value = 0.7; }, 350);
-        updateSoundUI();
-      }
-
-      function updateSoundUI() {
-        document.getElementById('soundToggle').textContent = isPlaying ? 'Jazz · On' : 'Jazz · Off';
-        document.getElementById('soundDot').style.opacity = isPlaying ? '1' : '.35';
-      }
-
-      document.getElementById('enterSite').addEventListener('click', () => {
-        startJazz(); document.getElementById('welcome').classList.add('hidden');
-      });
-      document.getElementById('soundToggle').addEventListener('click', () => isPlaying ? stopJazz() : startJazz());
+      function stopJazz(){ audio.pause(); isPlaying=false; update(); }
+      function update(){ toggle.textContent=isPlaying?'Jazz · On':'Jazz · Off'; dot.style.opacity=isPlaying?'1':'.35'; }
+      enter.addEventListener('click', async()=>{ await startJazz(); document.getElementById('welcome').classList.add('hidden'); });
+      toggle.addEventListener('click', async()=>{ if(isPlaying) stopJazz(); else await startJazz(); });
+      audio.addEventListener('ended',()=>{isPlaying=false;update();});
     })();
   </script>
 
