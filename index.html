@@ -60,35 +60,27 @@
 
     /* Visible moving sunlight: warm afternoon rays crossing the page */
     .sunlight{position:fixed;inset:0;z-index:55;pointer-events:none;overflow:hidden;opacity:.9}
-    .sun-glow{position:absolute;width:46vmax;height:46vmax;right:-8vmax;top:-10vmax;border-radius:50%;background:radial-gradient(circle,rgba(255,244,211,.9) 0%,rgba(255,218,145,.42) 30%,rgba(255,205,120,.16) 55%,transparent 72%);filter:blur(4px);animation:sunMove 16s ease-in-out infinite alternate}
-    .sun-disk{position:absolute;width:105px;height:105px;right:8vw;top:8vh;border-radius:50%;background:radial-gradient(circle,rgba(255,251,231,.98),rgba(255,211,126,.58) 46%,transparent 72%);filter:blur(2px);box-shadow:0 0 70px rgba(255,210,120,.42);animation:sunDisk 16s ease-in-out infinite alternate}
     .sunbeam{position:absolute;left:-55vw;top:-30vh;width:95vw;height:170vh;transform:rotate(23deg);background:linear-gradient(90deg,transparent 0%,rgba(255,220,153,.02) 18%,rgba(255,226,166,.20) 40%,rgba(255,244,213,.34) 50%,rgba(255,220,153,.12) 62%,transparent 82%);filter:blur(13px);animation:beamSweep 12s ease-in-out infinite}
     .sunbeam-b{left:-65vw;top:-15vh;width:70vw;opacity:.6;transform:rotate(15deg);animation-duration:18s;animation-delay:-6s}
-    @keyframes sunMove{0%{transform:translate3d(8vw,-2vh,0) scale(.92)}50%{transform:translate3d(-4vw,6vh,0) scale(1.04)}100%{transform:translate3d(-18vw,16vh,0) scale(1.14)}}
-    @keyframes sunDisk{0%{transform:translate3d(5vw,-1vh,0)}100%{transform:translate3d(-18vw,15vh,0)}}
     @keyframes beamSweep{0%{transform:translateX(-10vw) rotate(23deg)}50%{transform:translateX(75vw) rotate(23deg)}100%{transform:translateX(155vw) rotate(23deg)}}
     .window-shadow{position:absolute;width:75vmax;height:100vh;right:-22vmax;top:-8vmax;opacity:.16;transform:rotate(18deg);background:repeating-linear-gradient(90deg,transparent 0 9vmax,rgba(90,55,30,.22) 9vmax 10vmax,transparent 10vmax 19vmax);filter:blur(9px);animation:shadowMove 24s ease-in-out infinite alternate}
-    @keyframes sunMove{0%{transform:translate3d(7vw,-2vh,0) scale(.9)}50%{transform:translate3d(-3vw,7vh,0) scale(1.05)}100%{transform:translate3d(-15vw,14vh,0) scale(1.12)}}
-    @keyframes sunDisk{0%{transform:translate3d(5vw,-1vh,0)}100%{transform:translate3d(-17vw,13vh,0)}}
     @keyframes beamMove{0%{transform:translate3d(12vw,-4vh,0) rotate(22deg)}100%{transform:translate3d(-20vw,14vh,0) rotate(12deg)}}
     @keyframes shadowMove{0%{transform:translate3d(7vw,-3vh,0) rotate(18deg)}100%{transform:translate3d(-18vw,12vh,0) rotate(26deg)}}
     .nav,.hero,.section,footer{position:relative;z-index:10}
 
     @media(max-width:850px){.nav-links{display:none}.hero,.intro-grid,.journey{grid-template-columns:1fr;gap:45px}.hero{padding-top:120px}.skills-grid{grid-template-columns:1fr 1fr}.works-grid{grid-template-columns:1fr}.section{padding:85px 0}.works-head{display:block}}
-    @media(max-width:520px){h1{font-size:64px}.hero-image{max-width:92%;margin:0 auto}.sun-glow{width:80vmax;height:80vmax;right:-30vmax}.sun-disk{right:4vmax;top:9vmax}.window-shadow{opacity:.11}.skills-grid{grid-template-columns:1fr}.journey-card{padding:30px}footer{display:block;text-align:center}footer div+div{margin-top:10px}}
+    @media(max-width:520px){h1{font-size:64px}.hero-image{max-width:92%;margin:0 auto}.window-shadow{opacity:.11}.skills-grid{grid-template-columns:1fr}.journey-card{padding:30px}footer{display:block;text-align:center}footer div+div{margin-top:10px}}
   
     /* --- Mahnaz atmosphere: sun + jazz --- */
     .atmosphere-ui{
       position:fixed; right:22px; bottom:20px; z-index:60;
-      display:flex; align-items:center; gap:9px;
-      padding:9px 13px; border:1px solid rgba(178,139,82,.28);
-      background:rgba(251,249,245,.72); backdrop-filter:blur(12px);
-      color:var(--espresso); font-size:9px; letter-spacing:.16em; text-transform:uppercase;
-      box-shadow:0 10px 30px rgba(65,42,25,.08);
+      display:flex; align-items:center;
+      color:var(--espresso);
     }
-    .sound-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(178,139,82,.10)}
-    .sound-btn{border:0;background:transparent;color:inherit;font:inherit;letter-spacing:inherit;cursor:pointer;padding:0}
-    .sound-btn:hover{color:var(--gold)}
+    .sound-dot{display:none}
+    .sound-btn{width:42px;height:42px;border:1px solid rgba(178,139,82,.55);border-radius:50%;background:rgba(251,249,245,.72);color:var(--espresso);font-family:Georgia,serif;font-size:22px;line-height:1;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:.25s;box-shadow:0 8px 24px rgba(65,42,25,.06)}
+    .sound-btn:hover{color:var(--gold);transform:translateY(-1px);box-shadow:0 10px 28px rgba(65,42,25,.10)}
+    .sound-btn.is-off{opacity:.58}
     .welcome{
       position:fixed; inset:0; z-index:100; display:grid; place-items:center;
       background:radial-gradient(circle at 75% 20%,rgba(255,221,165,.16),transparent 34%),rgba(37,28,23,.96);
@@ -116,12 +108,9 @@
 <body>
 
   <div class="sunlight" aria-hidden="true">
-    <div class="sun-glow"></div>
-    <div class="sun-disk"></div>
     <div class="sunbeam sunbeam-a"></div>
     <div class="sunbeam sunbeam-b"></div>
     <div class="window-shadow"></div>
-    <div class="light-orbit"></div>
   </div>
 
   <div class="welcome" id="welcome">
@@ -133,9 +122,8 @@
     </div>
   </div>
 
-  <div class="atmosphere-ui">
-    <span class="sound-dot" id="soundDot"></span>
-    <button class="sound-btn" id="soundToggle" type="button">Jazz · On</button>
+  <div class="atmosphere-ui" aria-label="Music controls">
+    <button class="sound-btn" id="soundToggle" type="button" aria-label="Turn jazz off" title="Jazz: On">♪</button>
   </div>
 
   <nav class="nav"><div class="container nav-inner">
@@ -148,7 +136,7 @@
         <p class="hero-copy">I transform inspiration, emotion and the character of gemstones into distinctive jewelry concepts shaped by form, color and story.</p>
         <div class="buttons"><a class="btn primary" href="#work">Explore My Work</a><a class="btn" href="#contact">Let's Connect</a></div><div class="scroll-hint">Scroll to explore <span>↓</span></div>
       </div>
-      <div class="hero-image portrait-frame"><img src="mahnaz-portrait.png" alt="Mahnaz Rahmati — Jewelry Designer & Creative"><div class="portrait-caption">Jewelry Designer · Creative</div></div>
+      <div class="hero-image portrait-frame"><img src="mahnaz-portrait.webp" alt="Mahnaz Rahmati — Jewelry Designer & Creative"><div class="portrait-caption">Jewelry Designer · Creative</div></div>
     </section>
 
     <section class="section container" id="about"><div class="intro-grid">
@@ -214,15 +202,19 @@
     (() => {
       const audio = document.getElementById('jazzAudio');
       const toggle = document.getElementById('soundToggle');
-      const dot = document.getElementById('soundDot');
       const enter = document.getElementById('enterSite');
       let isPlaying = false;
+      update();
       async function startJazz(){
         try{ await audio.play(); isPlaying=true; update(); }
         catch(e){ isPlaying=false; update(); }
       }
       function stopJazz(){ audio.pause(); isPlaying=false; update(); }
-      function update(){ toggle.textContent=isPlaying?'Jazz · On':'Jazz · Off'; dot.style.opacity=isPlaying?'1':'.35'; }
+      function update(){
+        toggle.classList.toggle('is-off', !isPlaying);
+        toggle.setAttribute('aria-label', isPlaying ? 'Turn jazz off' : 'Turn jazz on');
+        toggle.setAttribute('title', isPlaying ? 'Jazz: On' : 'Jazz: Off');
+      }
       enter.addEventListener('click', async()=>{ await startJazz(); document.getElementById('welcome').classList.add('hidden'); });
       toggle.addEventListener('click', async()=>{ if(isPlaying) stopJazz(); else await startJazz(); });
       audio.addEventListener('ended',()=>{isPlaying=false;update();});
