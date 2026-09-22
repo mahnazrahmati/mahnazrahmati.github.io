@@ -7,7 +7,7 @@
   <title>Mahnaz Rahmati | Jewelry Designer & Creative</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Vazirmatn:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{--ivory:#F6F2EB;--ivory-2:#FBF9F5;--espresso:#251C17;--brown:#5F5148;--taupe:#8D7D70;--champagne:#E4D5C3;--gold:#B28B52;--gold-soft:#C8A976;--shadow:0 24px 70px rgba(65,42,25,.10);--serif:"Cormorant Garamond",Georgia,serif;--sans:"Manrope",Arial,sans-serif}
     *{box-sizing:border-box} html{scroll-behavior:smooth}
@@ -103,6 +103,25 @@
       .welcome p{font-size:13px}
     }
 
+
+    /* --- Bilingual interface --- */
+    .lang-btn{width:auto;min-width:58px;height:42px;border:1px solid rgba(178,139,82,.55);border-radius:21px;background:rgba(251,249,245,.72);color:var(--espresso);font-family:var(--sans);font-size:10px;letter-spacing:.12em;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0 13px;transition:.25s;box-shadow:0 8px 24px rgba(65,42,25,.06);margin-right:8px}
+    .lang-btn:hover{color:var(--gold);transform:translateY(-1px)}
+    .lang-btn .fa-label{display:none}
+    .lang-btn.is-fa .en-label{display:none}.lang-btn.is-fa .fa-label{display:inline}
+    body.rtl{font-family:"Vazirmatn",Tahoma,Arial,sans-serif;direction:rtl}
+    body.rtl .nav-inner{direction:rtl}
+    body.rtl .nav-links{direction:rtl}
+    body.rtl .hero,.rtl .intro-grid,.rtl .journey{direction:rtl}
+    body.rtl .hero-copy,.rtl .body-copy{line-height:2}
+    body.rtl .hero-copy{max-width:590px}
+    body.rtl .buttons{direction:rtl}
+    body.rtl .works-head{direction:rtl}
+    body.rtl .work-info{text-align:right}
+    body.rtl .contact-links{direction:rtl}
+    body.rtl .scroll-hint{direction:rtl}
+    body.rtl .brand span{letter-spacing:.12em}
+    @media(max-width:850px){.lang-btn{margin-right:6px}}
   </style>
 </head>
 <body>
@@ -115,85 +134,86 @@
 
   <div class="welcome" id="welcome">
     <div class="welcome-card">
-      <div class="welcome-kicker">Mahnaz Rahmati — Creative Space</div>
-      <h2>Enter the light.</h2>
-      <p>A quiet visual space for jewelry, gemstones, ideas and stories — with a little jazz in the background.</p>
-      <button class="enter-btn" id="enterSite">Enter &nbsp;·&nbsp; Play Jazz</button>
+      <div class="welcome-kicker" data-i18n="welcomeKicker">Mahnaz Rahmati — Creative Space</div>
+      <h2 data-i18n="welcomeTitle">Enter the light.</h2>
+      <p data-i18n="welcomeText">A quiet visual space for jewelry, gemstones, ideas and stories — with a little jazz in the background.</p>
+      <button class="enter-btn" id="enterSite" data-i18n="enterBtn">Enter &nbsp;·&nbsp; Play Jazz</button>
     </div>
   </div>
 
-  <div class="atmosphere-ui" aria-label="Music controls">
-    <button class="sound-btn" id="soundToggle" type="button" aria-label="Turn jazz off" title="Jazz: On">♪</button>
+  <div class="atmosphere-ui" aria-label="Site controls">
+    <button class="lang-btn" id="langToggle" type="button" aria-label="Switch to Persian" title="Switch language"><span class="en-label">FA</span><span class="fa-label">EN</span></button>
+    <button class="sound-btn" id="soundToggle" type="button" aria-label="Turn music off" title="Music: On">♪</button>
   </div>
 
   <nav class="nav"><div class="container nav-inner">
-    <a class="brand" href="#top">MAHNAZ<span>JEWELRY DESIGN & CREATIVITY</span></a>
-    <div class="nav-links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#work">Works</a><a href="#contact">Contact</a></div>
+    <a class="brand" href="#top">MAHNAZ<span data-i18n="brandSub">JEWELRY DESIGN & CREATIVITY</span></a>
+    <div class="nav-links"><a href="#about" data-i18n="navAbout">About</a><a href="#skills" data-i18n="navSkills">Skills</a><a href="#work" data-i18n="navWorks">Works</a><a href="#contact" data-i18n="navContact">Contact</a></div>
   </div></nav>
   <main id="top">
     <section class="hero container">
-      <div><div class="eyebrow">Jewelry Designer & Creative</div><h1>Ideas into <em>jewelry.</em></h1>
-        <p class="hero-copy">I transform inspiration, emotion and the character of gemstones into distinctive jewelry concepts shaped by form, color and story.</p>
-        <div class="buttons"><a class="btn primary" href="#work">Explore My Work</a><a class="btn" href="#contact">Let's Connect</a></div><div class="scroll-hint">Scroll to explore <span>↓</span></div>
+      <div><div class="eyebrow" data-i18n="heroEyebrow">Jewelry Designer & Creative</div><h1 data-i18n="heroTitle">Ideas into <em>jewelry.</em></h1>
+        <p class="hero-copy" data-i18n="heroCopy">I transform inspiration, emotion and the character of gemstones into distinctive jewelry concepts shaped by form, color and story.</p>
+        <div class="buttons"><a class="btn primary" href="#work" data-i18n="heroBtn1">Explore My Work</a><a class="btn" href="#contact" data-i18n="heroBtn2">Let's Connect</a></div><div class="scroll-hint" data-i18n="scrollHint">Scroll to explore <span>↓</span></div>
       </div>
-      <div class="hero-image portrait-frame"><img src="mahnaz-portrait.webp" alt="Mahnaz Rahmati — Jewelry Designer & Creative"><div class="portrait-caption">Jewelry Designer · Creative</div></div>
+      <div class="hero-image portrait-frame"><img src="mahnaz-portrait.webp" alt="Mahnaz Rahmati — Jewelry Designer & Creative"><div class="portrait-caption" data-i18n="portraitCaption">Jewelry Designer · Creative</div></div>
     </section>
 
     <section class="section container" id="about"><div class="intro-grid">
-      <div><div class="section-label">01 — About Me</div><div class="large-quote">Where imagination meets precision, a piece begins to take shape.</div></div>
-      <div class="body-copy"><p>I am <strong>Mahnaz Rahmati</strong>, a Jewelry Designer & Creative drawn to the meeting point of beauty, imagination and thoughtful design.</p>
-      <p>I enjoy exploring form, proportion, color and detail — especially the way gemstones can influence the mood and identity of a piece. For me, every concept begins with curiosity and develops through visual exploration.</p>
-      <p>Alongside jewelry design, I have a professional background in accounting and I am currently developing my knowledge of business development. This combination brings together creative thinking, precision and a practical understanding of business.</p></div>
+      <div><div class="section-label" data-i18n="aboutLabel">01 — About Me</div><div class="large-quote" data-i18n="aboutQuote">Where imagination meets precision, a piece begins to take shape.</div></div>
+      <div class="body-copy"><p data-i18n="aboutP1">I am <strong>Mahnaz Rahmati</strong>, a Jewelry Designer & Creative drawn to the meeting point of beauty, imagination and thoughtful design.</p>
+      <p data-i18n="aboutP2">I enjoy exploring form, proportion, color and detail — especially the way gemstones can influence the mood and identity of a piece. For me, every concept begins with curiosity and develops through visual exploration.</p>
+      <p data-i18n="aboutP3">Alongside jewelry design, I have a professional background in accounting and I am currently developing my knowledge of business development. This combination brings together creative thinking, precision and a practical understanding of business.</p></div>
     </div></section>
 
     <section class="section philosophy"><div class="container philosophy-inner">
-      <div class="section-label">02 — Design Philosophy</div><h2 class="section-title">Creating with Feeling</h2>
-      <p class="body-copy" style="margin:25px auto">Jewelry, to me, is more than an object. It is a dialogue between form, emotion, color and story. Gemstones are often my starting point — their natural character, reflections and color can open the door to an entirely new idea.</p>
+      <div class="section-label" data-i18n="philLabel">02 — Design Philosophy</div><h2 class="section-title" data-i18n="philTitle">Creating with Feeling</h2>
+      <p class="body-copy" style="margin:25px auto" data-i18n="philCopy">Jewelry, to me, is more than an object. It is a dialogue between form, emotion, color and story. Gemstones are often my starting point — their natural character, reflections and color can open the door to an entirely new idea.</p>
       <div class="tagline">Create. Explore. Transform.</div>
     </div></section>
 
-    <section class="section container" id="skills"><div class="section-label">03 — What I Do</div><h2 class="section-title">What I Create</h2>
+    <section class="section container" id="skills"><div class="section-label" data-i18n="skillsLabel">03 — What I Do</div><h2 class="section-title" data-i18n="skillsTitle">What I Create</h2>
       <div class="skills-grid">
-        <article class="skill"><div class="skill-number">01</div><h3>Jewelry Design</h3><p>Developing original concepts and translating ideas into jewelry forms.</p></article>
-        <article class="skill"><div class="skill-number">02</div><h3>Creative Ideation</h3><p>Exploring concepts, shapes, colors and visual references to create distinctive designs.</p></article>
-        <article class="skill"><div class="skill-number">03</div><h3>Gemstones & Color</h3><p>Using gemstone character, color and visual qualities as inspiration for concepts.</p></article>
-        <article class="skill"><div class="skill-number">04</div><h3>Business Thinking</h3><p>Accounting experience combined with ongoing learning in business development.</p></article>
+        <article class="skill"><div class="skill-number">01</div><h3 data-i18n="skill1Title">Jewelry Design</h3><p data-i18n="skill1Text">Developing original concepts and translating ideas into jewelry forms.</p></article>
+        <article class="skill"><div class="skill-number">02</div><h3 data-i18n="skill2Title">Creative Ideation</h3><p data-i18n="skill2Text">Exploring concepts, shapes, colors and visual references to create distinctive designs.</p></article>
+        <article class="skill"><div class="skill-number">03</div><h3 data-i18n="skill3Title">Gemstones & Color</h3><p data-i18n="skill3Text">Using gemstone character, color and visual qualities as inspiration for concepts.</p></article>
+        <article class="skill"><div class="skill-number">04</div><h3 data-i18n="skill4Title">Business Thinking</h3><p data-i18n="skill4Text">Accounting experience combined with ongoing learning in business development.</p></article>
       </div>
     </section>
 
-    <section class="section container" id="work"><div class="works-head"><div><div class="section-label">04 — Selected Works</div><h2 class="section-title">A Visual Language</h2></div>
-      <p>A selection of jewelry concepts exploring fantasy, nature, symbolism, gemstones and sculptural forms.</p></div>
+    <section class="section container" id="work"><div class="works-head"><div><div class="section-label" data-i18n="worksLabel">04 — Selected Works</div><h2 class="section-title" data-i18n="worksTitle">A Visual Language</h2></div>
+      <p data-i18n="worksIntro">A selection of jewelry concepts exploring fantasy, nature, symbolism, gemstones and sculptural forms.</p></div>
       <div class="works-grid">
-        <article class="work"><img src="work-1.png" alt="Feline Fantasy jewelry concept"><div class="work-info"><small>01 — Concept</small><h3>Feline Fantasy</h3><p>A playful concept inspired by feline forms and expressive details.</p></div></article>
-        <article class="work"><img src="work-2.png" alt="Mystical Bloom jewelry concept"><div class="work-info"><small>02 — Concept</small><h3>Mystical Bloom</h3><p>A fantasy-inspired piece combining organic patterns and gemstones.</p></div></article>
-        <article class="work"><img src="work-3.png" alt="Sacred Geometry jewelry concept"><div class="work-info"><small>03 — Statement</small><h3>Sacred Geometry</h3><p>A statement concept inspired by symmetry, ornament and color.</p></div></article>
-        <article class="work"><img src="work-4.png" alt="Emerald Flow jewelry concept"><div class="work-info"><small>04 — Sculptural</small><h3>Emerald Flow</h3><p>Fluid lines and repeated curves contrasted with rich green tones.</p></div></article>
-        <article class="work"><img src="work-5.png" alt="Botanical Elegance jewelry concept"><div class="work-info"><small>05 — Fine Detail</small><h3>Botanical Elegance</h3><p>A refined study of leaves, gemstones and natural rhythm.</p></div></article>
-        <article class="work"><img src="work-6.png" alt="Golden Bloom jewelry concept"><div class="work-info"><small>06 — Ring Concept</small><h3>Golden Bloom</h3><p>A central gemstone framed by delicate botanical elements.</p></div></article>
+        <article class="work"><img src="work-1.png" alt="Feline Fantasy jewelry concept"><div class="work-info"><small data-i18n="work1Small">01 — Concept</small><h3 data-i18n="work1Title">Feline Fantasy</h3><p data-i18n="work1Text">A playful concept inspired by feline forms and expressive details.</p></div></article>
+        <article class="work"><img src="work-2.png" alt="Mystical Bloom jewelry concept"><div class="work-info"><small data-i18n="work2Small">02 — Concept</small><h3 data-i18n="work2Title">Mystical Bloom</h3><p data-i18n="work2Text">A fantasy-inspired piece combining organic patterns and gemstones.</p></div></article>
+        <article class="work"><img src="work-3.png" alt="Sacred Geometry jewelry concept"><div class="work-info"><small data-i18n="work3Small">03 — Statement</small><h3 data-i18n="work3Title">Sacred Geometry</h3><p data-i18n="work3Text">A statement concept inspired by symmetry, ornament and color.</p></div></article>
+        <article class="work"><img src="work-4.png" alt="Emerald Flow jewelry concept"><div class="work-info"><small data-i18n="work4Small">04 — Sculptural</small><h3 data-i18n="work4Title">Emerald Flow</h3><p data-i18n="work4Text">Fluid lines and repeated curves contrasted with rich green tones.</p></div></article>
+        <article class="work"><img src="work-5.png" alt="Botanical Elegance jewelry concept"><div class="work-info"><small data-i18n="work5Small">05 — Fine Detail</small><h3 data-i18n="work5Title">Botanical Elegance</h3><p data-i18n="work5Text">A refined study of leaves, gemstones and natural rhythm.</p></div></article>
+        <article class="work"><img src="work-6.png" alt="Golden Bloom jewelry concept"><div class="work-info"><small data-i18n="work6Small">06 — Ring Concept</small><h3 data-i18n="work6Title">Golden Bloom</h3><p data-i18n="work6Text">A central gemstone framed by delicate botanical elements.</p></div></article>
       </div>
-      <article class="work" style="margin-top:26px"><img src="work-7.png" alt="Elephant Symbolism jewelry concept"><div class="work-info"><small>07 — Symbolic</small><h3>Elephant Symbolism</h3><p>A sculptural concept inspired by strength, character and expressive form.</p></div></article>
+      <article class="work" style="margin-top:26px"><img src="work-7.png" alt="Elephant Symbolism jewelry concept"><div class="work-info"><small data-i18n="work7Small">07 — Symbolic</small><h3 data-i18n="work7Title">Elephant Symbolism</h3><p data-i18n="work7Text">A sculptural concept inspired by strength, character and expressive form.</p></div></article>
     </section>
 
     <section class="section container"><div class="journey">
-      <div><div class="section-label">05 — My Journey</div><h2 class="section-title">From Numbers<br>to Creativity</h2></div>
-      <div class="journey-card"><div class="big">Precision meets imagination.</div><p class="body-copy">My professional journey began in accounting, where I developed a strong foundation in precision, organization and analytical thinking. Over time, my passion for creativity and jewelry design became impossible to ignore.</p><p class="body-copy">Today, I am building a path that brings both sides together: creative design and business thinking.</p></div>
+      <div><div class="section-label" data-i18n="journeyLabel">05 — My Journey</div><h2 class="section-title" data-i18n="journeyTitle">From Numbers<br>to Creativity</h2></div>
+      <div class="journey-card"><div class="big" data-i18n="journeyBig">Precision meets imagination.</div><p class="body-copy" data-i18n="journeyP1">My professional journey began in accounting, where I developed a strong foundation in precision, organization and analytical thinking. Over time, my passion for creativity and jewelry design became impossible to ignore.</p><p class="body-copy" data-i18n="journeyP2">Today, I am building a path that brings both sides together: creative design and business thinking.</p></div>
     </div></section>
 
-    <section class="section nuraya"><div class="container"><div class="section-label">06 — Creative Space</div><div class="nuraya-mark">NURAYA</div><h2 class="section-title">Jewelry Design & Creativity</h2>
-      <p class="nuraya-copy">NURAYA is a creative space where jewelry design, imagination and visual storytelling come together.</p>
-      <div style="margin-top:30px"><a class="btn" style="color:#fff8f1;border-color:#d5b77d" href="https://www.instagram.com/nuraya.design/" target="_blank" rel="noopener">Explore NURAYA →</a></div>
+    <section class="section nuraya"><div class="container"><div class="section-label" data-i18n="nurayaLabel">06 — Creative Space</div><div class="nuraya-mark">NURAYA</div><h2 class="section-title" data-i18n="nurayaTitle">Jewelry Design & Creativity</h2>
+      <p class="nuraya-copy" data-i18n="nurayaCopy">NURAYA is a creative space where jewelry design, imagination and visual storytelling come together.</p>
+      <div style="margin-top:30px"><a class="btn" style="color:#fff8f1;border-color:#d5b77d" href="https://www.instagram.com/nuraya.design/" target="_blank" rel="noopener" data-i18n="nurayaBtn">Explore NURAYA →</a></div>
     </div></section>
 
-    <section class="section contact" id="contact"><div class="container"><div class="section-label">07 — Contact</div><h2 class="section-title">Let’s Create Something Meaningful.</h2>
-      <p>Have an idea, a project or a creative collaboration in mind? I would love to connect.</p>
+    <section class="section contact" id="contact"><div class="container"><div class="section-label" data-i18n="contactLabel">07 — Contact</div><h2 class="section-title" data-i18n="contactTitle">Let’s Create Something Meaningful.</h2>
+      <p data-i18n="contactText">Have an idea, a project or a creative collaboration in mind? I would love to connect.</p>
       <div class="contact-links">
-        <a href="https://www.instagram.com/nuraya.design/" target="_blank" rel="noopener">Instagram</a>
-        <a href="mailto:mahnaz.rahmati95@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/nuraya.design/" target="_blank" rel="noopener" data-i18n="instagram">Instagram</a>
+        <a href="mailto:mahnaz.rahmati95@gmail.com" data-i18n="email">Email</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" data-i18n="linkedin">LinkedIn</a>
       </div>
     </div></section>
   </main>
-  <footer class="container"><div>© 2026 Mahnaz Rahmati</div><div>Jewelry Designer & Creative</div></footer>
+  <footer class="container"><div data-i18n="footerCopy">© 2026 Mahnaz Rahmati</div><div data-i18n="footerTitle">Jewelry Designer & Creative</div></footer>
 
 
   <audio id="jazzAudio" src="jazz.mp3" preload="auto" loop></audio>
@@ -203,21 +223,64 @@
       const audio = document.getElementById('jazzAudio');
       const toggle = document.getElementById('soundToggle');
       const enter = document.getElementById('enterSite');
+      const langToggle = document.getElementById('langToggle');
+      const root = document.documentElement;
+      const body = document.body;
       let isPlaying = false;
-      update();
-      async function startJazz(){
-        try{ await audio.play(); isPlaying=true; update(); }
-        catch(e){ isPlaying=false; update(); }
+      let lang = localStorage.getItem('mahnazLang') || 'en';
+
+      const translations = {
+        en: {
+          welcomeKicker:'Mahnaz Rahmati — Creative Space', welcomeTitle:'Enter the light.', welcomeText:'A quiet visual space for jewelry, gemstones, ideas and stories — with a little jazz in the background.', enterBtn:'Enter &nbsp;·&nbsp; Play Jazz', brandSub:'JEWELRY DESIGN & CREATIVITY', navAbout:'About', navSkills:'Skills', navWorks:'Works', navContact:'Contact',
+          heroEyebrow:'Jewelry Designer & Creative', heroTitle:'Ideas into <em>jewelry.</em>', heroCopy:'I transform inspiration, emotion and the character of gemstones into distinctive jewelry concepts shaped by form, color and story.', heroBtn1:'Explore My Work', heroBtn2:"Let's Connect", scrollHint:'Scroll to explore <span>↓</span>', portraitCaption:'Jewelry Designer · Creative',
+          aboutLabel:'01 — About Me', aboutQuote:'Where imagination meets precision, a piece begins to take shape.', aboutP1:'I am <strong>Mahnaz Rahmati</strong>, a Jewelry Designer & Creative drawn to the meeting point of beauty, imagination and thoughtful design.', aboutP2:'I enjoy exploring form, proportion, color and detail — especially the way gemstones can influence the mood and identity of a piece. For me, every concept begins with curiosity and develops through visual exploration.', aboutP3:'Alongside jewelry design, I have a professional background in accounting and I am currently developing my knowledge of business development. This combination brings together creative thinking, precision and a practical understanding of business.',
+          philLabel:'02 — Design Philosophy', philTitle:'Creating with Feeling', philCopy:'Jewelry, to me, is more than an object. It is a dialogue between form, emotion, color and story. Gemstones are often my starting point — their natural character, reflections and color can open the door to an entirely new idea.',
+          skillsLabel:'03 — What I Do', skillsTitle:'What I Create', skill1Title:'Jewelry Design', skill1Text:'Developing original concepts and translating ideas into jewelry forms.', skill2Title:'Creative Ideation', skill2Text:'Exploring concepts, shapes, colors and visual references to create distinctive designs.', skill3Title:'Gemstones & Color', skill3Text:'Using gemstone character, color and visual qualities as inspiration for concepts.', skill4Title:'Business Thinking', skill4Text:'Accounting experience combined with ongoing learning in business development.',
+          worksLabel:'04 — Selected Works', worksTitle:'A Visual Language', worksIntro:'A selection of jewelry concepts exploring fantasy, nature, symbolism, gemstones and sculptural forms.', work1Small:'01 — Concept', work1Title:'Feline Fantasy', work1Text:'A playful concept inspired by feline forms and expressive details.', work2Small:'02 — Concept', work2Title:'Mystical Bloom', work2Text:'A fantasy-inspired piece combining organic patterns and gemstones.', work3Small:'03 — Statement', work3Title:'Sacred Geometry', work3Text:'A statement concept inspired by symmetry, ornament and color.', work4Small:'04 — Sculptural', work4Title:'Emerald Flow', work4Text:'Fluid lines and repeated curves contrasted with rich green tones.', work5Small:'05 — Fine Detail', work5Title:'Botanical Elegance', work5Text:'A refined study of leaves, gemstones and natural rhythm.', work6Small:'06 — Ring Concept', work6Title:'Golden Bloom', work6Text:'A central gemstone framed by delicate botanical elements.', work7Small:'07 — Symbolic', work7Title:'Elephant Symbolism', work7Text:'A sculptural concept inspired by strength, character and expressive form.',
+          journeyLabel:'05 — My Journey', journeyTitle:'From Numbers<br>to Creativity', journeyBig:'Precision meets imagination.', journeyP1:'My professional journey began in accounting, where I developed a strong foundation in precision, organization and analytical thinking. Over time, my passion for creativity and jewelry design became impossible to ignore.', journeyP2:'Today, I am building a path that brings both sides together: creative design and business thinking.',
+          nurayaLabel:'06 — Creative Space', nurayaTitle:'Jewelry Design & Creativity', nurayaCopy:'NURAYA is a creative space where jewelry design, imagination and visual storytelling come together.', nurayaBtn:'Explore NURAYA →', contactLabel:'07 — Contact', contactTitle:'Let’s Create Something Meaningful.', contactText:'Have an idea, a project or a creative collaboration in mind? I would love to connect.', instagram:'Instagram', email:'Email', linkedin:'LinkedIn', footerCopy:'© 2026 Mahnaz Rahmati', footerTitle:'Jewelry Designer & Creative'
+        },
+        fa: {
+          welcomeKicker:'مهناز رحمتی — فضای خلاق', welcomeTitle:'به دنیای نور خوش آمدید.', welcomeText:'فضایی آرام برای جواهر، سنگ‌های قیمتی، ایده‌ها و داستان‌ها — با کمی جاز در پس‌زمینه.', enterBtn:'ورود &nbsp;·&nbsp; پخش موسیقی', brandSub:'طراحی جواهر و خلاقیت', navAbout:'درباره من', navSkills:'مهارت‌ها', navWorks:'آثار', navContact:'تماس',
+          heroEyebrow:'طراح جواهر و خلاق', heroTitle:'ایده‌ها به <em>جواهر.</em>', heroCopy:'الهام، احساس و شخصیت سنگ‌های قیمتی را به ایده‌های متمایز جواهر تبدیل می‌کنم؛ ایده‌هایی شکل‌گرفته از فرم، رنگ و داستان.', heroBtn1:'مشاهده آثار', heroBtn2:'ارتباط با من', scrollHint:'برای کشف بیشتر اسکرول کنید <span>↓</span>', portraitCaption:'طراح جواهر · خلاق',
+          aboutLabel:'۰۱ — درباره من', aboutQuote:'جایی که خیال با دقت روبه‌رو می‌شود، یک اثر شکل می‌گیرد.', aboutP1:'من <strong>مهناز رحمتی</strong> هستم؛ طراح جواهر و خلاق، علاقه‌مند به نقطه تلاقی زیبایی، خیال‌پردازی و طراحی هدفمند.', aboutP2:'از کشف فرم، تناسب، رنگ و جزئیات لذت می‌برم؛ به‌ویژه از اینکه سنگ‌های قیمتی چگونه می‌توانند حال‌وهوا و هویت یک اثر را شکل دهند. برای من، هر ایده با کنجکاوی آغاز می‌شود و از مسیر جست‌وجوی بصری رشد می‌کند.', aboutP3:'در کنار طراحی جواهر، سابقه حرفه‌ای در حسابداری دارم و در حال توسعه دانش خود در زمینه توسعه کسب‌وکار هستم. این ترکیب، تفکر خلاق، دقت و درک عملی از کسب‌وکار را در کنار هم قرار می‌دهد.',
+          philLabel:'۰۲ — فلسفه طراحی', philTitle:'خلق با احساس', philCopy:'برای من، جواهر چیزی فراتر از یک شیء است؛ گفت‌وگویی میان فرم، احساس، رنگ و داستان. سنگ‌های قیمتی اغلب نقطه شروع من هستند؛ شخصیت طبیعی، انعکاس‌ها و رنگ آن‌ها می‌توانند مسیر یک ایده کاملاً تازه را باز کنند.',
+          skillsLabel:'۰۳ — آنچه انجام می‌دهم', skillsTitle:'آنچه خلق می‌کنم', skill1Title:'طراحی جواهر', skill1Text:'توسعه ایده‌های اصیل و تبدیل آن‌ها به فرم‌های جواهر.', skill2Title:'ایده‌پردازی خلاق', skill2Text:'بررسی مفاهیم، فرم‌ها، رنگ‌ها و منابع بصری برای خلق طراحی‌های متمایز.', skill3Title:'سنگ‌های قیمتی و رنگ', skill3Text:'استفاده از شخصیت، رنگ و ویژگی‌های بصری سنگ‌ها به‌عنوان منبع الهام.', skill4Title:'نگاه کسب‌وکاری', skill4Text:'ترکیب تجربه حسابداری با یادگیری مستمر در زمینه توسعه کسب‌وکار.',
+          worksLabel:'۰۴ — آثار منتخب', worksTitle:'زبان بصری', worksIntro:'مجموعه‌ای از ایده‌های جواهر با الهام از خیال، طبیعت، نمادها، سنگ‌های قیمتی و فرم‌های مجسمه‌وار.', work1Small:'۰۱ — کانسپت', work1Title:'فانتزی گربه‌سان', work1Text:'ایده‌ای بازیگوشانه با الهام از فرم‌های گربه‌سان و جزئیات بیانی.', work2Small:'۰۲ — کانسپت', work2Title:'شکوفه اسرارآمیز', work2Text:'اثری خیال‌پردازانه با ترکیب الگوهای ارگانیک و سنگ‌های قیمتی.', work3Small:'۰۳ — استیتمنت', work3Title:'هندسه مقدس', work3Text:'ایده‌ای شاخص با الهام از تقارن، تزئینات و رنگ.', work4Small:'۰۴ — مجسمه‌وار', work4Title:'جریان زمرد', work4Text:'خطوط سیال و منحنی‌های تکرارشونده در کنار طیف‌های غنی سبز.', work5Small:'۰۵ — جزئیات ظریف', work5Title:'ظرافت گیاهی', work5Text:'مطالعه‌ای ظریف از برگ‌ها، سنگ‌ها و ریتم طبیعی.', work6Small:'۰۶ — کانسپت انگشتر', work6Title:'شکوفه طلایی', work6Text:'سنگی مرکزی در میان ترکیبی ظریف از عناصر گیاهی.', work7Small:'۰۷ — نمادین', work7Title:'نماد فیل', work7Text:'ایده‌ای مجسمه‌وار با الهام از قدرت، شخصیت و فرم بیانگر.',
+          journeyLabel:'۰۵ — مسیر من', journeyTitle:'از اعداد<br>تا خلاقیت', journeyBig:'دقت در کنار خیال.', journeyP1:'مسیر حرفه‌ای من با حسابداری آغاز شد؛ جایی که پایه‌ای قوی در دقت، نظم و تفکر تحلیلی پیدا کردم. با گذشت زمان، علاقه‌ام به خلاقیت و طراحی جواهر دیگر قابل نادیده گرفتن نبود.', journeyP2:'امروز در حال ساختن مسیری هستم که این دو بخش را کنار هم قرار می‌دهد: طراحی خلاق و نگاه کسب‌وکاری.',
+          nurayaLabel:'۰۶ — فضای خلاق', nurayaTitle:'طراحی جواهر و خلاقیت', nurayaCopy:'NURAYA فضای خلاق من برای کنار هم آوردن طراحی جواهر، خیال‌پردازی و روایت بصری است.', nurayaBtn:'ورود به NURAYA ←', contactLabel:'۰۷ — تماس', contactTitle:'بیایید چیزی معنادار خلق کنیم.', contactText:'ایده، پروژه یا همکاری خلاقانه‌ای در ذهن دارید؟ خوشحال می‌شوم با شما در ارتباط باشم.', instagram:'اینستاگرام', email:'ایمیل', linkedin:'لینکدین', footerCopy:'© ۲۰۲۶ مهناز رحمتی', footerTitle:'طراح جواهر و خلاق'
+        }
+      };
+
+      function applyLanguage(next){
+        lang = next;
+        const dict = translations[lang];
+        document.querySelectorAll('[data-i18n]').forEach(el=>{
+          const key=el.getAttribute('data-i18n');
+          if(dict[key]!==undefined) el.innerHTML=dict[key];
+        });
+        body.classList.toggle('rtl',lang==='fa');
+        root.lang=lang==='fa'?'fa':'en';
+        root.dir=lang==='fa'?'rtl':'ltr';
+        langToggle.classList.toggle('is-fa',lang==='fa');
+        langToggle.setAttribute('aria-label',lang==='fa'?'Switch to English':'Switch to Persian');
+        langToggle.title=lang==='fa'?'English':'فارسی';
+        document.title=lang==='fa'?'مهناز رحمتی | طراح جواهر و خلاق':'Mahnaz Rahmati | Jewelry Designer & Creative';
+        document.querySelector('meta[name="description"]').setAttribute('content',lang==='fa'?'مهناز رحمتی — طراح جواهر و خلاق. پرتفولیوی شخصی با تمرکز بر طراحی جواهر، سنگ‌های قیمتی و روایت بصری.':'Mahnaz Rahmati — Jewelry Designer & Creative. A personal portfolio exploring jewelry, gemstones, creativity and visual storytelling.');
+        localStorage.setItem('mahnazLang',lang);
       }
-      function stopJazz(){ audio.pause(); isPlaying=false; update(); }
       function update(){
-        toggle.classList.toggle('is-off', !isPlaying);
-        toggle.setAttribute('aria-label', isPlaying ? 'Turn jazz off' : 'Turn jazz on');
-        toggle.setAttribute('title', isPlaying ? 'Jazz: On' : 'Jazz: Off');
+        toggle.classList.toggle('is-off',!isPlaying);
+        toggle.setAttribute('aria-label',isPlaying?(lang==='fa'?'خاموش کردن موسیقی':'Turn music off'):(lang==='fa'?'روشن کردن موسیقی':'Turn music on'));
+        toggle.title=isPlaying?(lang==='fa'?'موسیقی: روشن':'Music: On'):(lang==='fa'?'موسیقی: خاموش':'Music: Off');
       }
-      enter.addEventListener('click', async()=>{ await startJazz(); document.getElementById('welcome').classList.add('hidden'); });
-      toggle.addEventListener('click', async()=>{ if(isPlaying) stopJazz(); else await startJazz(); });
-      audio.addEventListener('ended',()=>{isPlaying=false;update();});
+      async function startJazz(){try{await audio.play();isPlaying=true;update()}catch(e){isPlaying=false;update()}}
+      function stopJazz(){audio.pause();isPlaying=false;update()}
+      enter.addEventListener('click',async()=>{await startJazz();document.getElementById('welcome').classList.add('hidden')});
+      toggle.addEventListener('click',async()=>{if(isPlaying)stopJazz();else await startJazz()});
+      langToggle.addEventListener('click',()=>applyLanguage(lang==='en'?'fa':'en'));
+      audio.addEventListener('ended',()=>{isPlaying=false;update()});
+      applyLanguage(lang); update();
     })();
   </script>
 
